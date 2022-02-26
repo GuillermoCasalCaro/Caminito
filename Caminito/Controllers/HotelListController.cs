@@ -1,3 +1,5 @@
+using Caminito.Atalaya;
+using Caminito.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Caminito.Controllers
@@ -7,31 +9,22 @@ namespace Caminito.Controllers
     public class HotelListController : ControllerBase
     {
         private readonly ILogger<HotelListController> _logger;
+        private readonly IAtalayaService _atalayaService;
 
-        public HotelListController(ILogger<HotelListController> logger)
+        public HotelListController(IAtalayaService atalayaService, ILogger<HotelListController> logger)
         {
+            _atalayaService = atalayaService;
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetHotelList")]
-        public Hotels Get()
+        [HttpGet(Name = "GetAtalayaHotels")]
+        public async Task<Hotels> HotelList()
         {
-            Room r1 = new Room();
-            r1.Name = "room_name";
-            r1.Price = "price_per_night_per_person";
-            r1.Room_Type = "room_type";
-            r1.Meals_Plan = "meal_code";
+            var atalayaHotelsDto = await _atalayaService.GetAtalayaHotelsAsync();
+            var atalayaRoomsDto = await _atalayaService.GetAtalayaRoomsAsync();
+            var atalayaRegimesDto = await _atalayaService.GetAtalayaRegimesAsync();
 
-            Hotel h1 = new Hotel();
-            h1.rooms = (new Room[] { r1 }).ToList();
-            h1.code = "hotel_code";
-            h1.name = "hotel_name";
-            h1.city = "hotel_city";
-
-            Hotels result = new Hotels();
-            result.hotels = (new Hotel[] { h1 }).ToList();
-
-            return result;
+            return TransformerService.AtalayaTransformer(atalayaHotelsDto, atalayaRoomsDto, atalayaRegimesDto);
         }
     }
 }
