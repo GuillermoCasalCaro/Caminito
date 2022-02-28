@@ -1,4 +1,4 @@
-﻿using Caminito.Atalaya;
+﻿using Caminito.Models.Atalaya;
 using System.Text.Json;
 
 namespace Caminito.Services
@@ -51,7 +51,7 @@ namespace Caminito.Services
             return DeserializeContent<AtalayaRoomsDto>(response);
         }
 
-        public async Task<AtalayaMealPlansDto> GetAtalayaRegimesAsync()
+        public async Task<AtalayaRegimesDto> GetAtalayaRegimesAsync()
         {
             _logger.LogInformation($"Getting Atalaya Regimes");
             var request = new HttpRequestMessage(HttpMethod.Get, _atalayaRegimesAPI);
@@ -64,7 +64,7 @@ namespace Caminito.Services
             }
 
             _logger.LogInformation($"Atalaya Regimes getted successfully");
-            return DeserializeContent<AtalayaMealPlansDto>(response);
+            return DeserializeContent<AtalayaRegimesDto>(response);
         }
 
         private static T DeserializeContent<T>(HttpResponseMessage response)

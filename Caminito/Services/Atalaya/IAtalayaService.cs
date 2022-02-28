@@ -1,5 +1,4 @@
-﻿
-using Caminito.Atalaya;
+﻿using Caminito.Models.Atalaya;
 
 namespace Caminito.Services
 {
@@ -7,6 +6,6 @@ namespace Caminito.Services
     {
         Task<AtalayaHotelsDto> GetAtalayaHotelsAsync();
         Task<AtalayaRoomsDto> GetAtalayaRoomsAsync();
-        Task<AtalayaMealPlansDto> GetAtalayaRegimesAsync();
+        Task<AtalayaRegimesDto> GetAtalayaRegimesAsync();
     }
 }

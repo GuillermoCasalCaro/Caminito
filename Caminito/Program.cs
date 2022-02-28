@@ -10,7 +10,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddHttpClient<IAtalayaService, AtalayaService>();
+builder.Services.AddHttpClient<IResortService, ResortService>();
+
 builder.Services.AddSingleton<IAtalayaService, AtalayaService>();
+builder.Services.AddSingleton<IResortService, ResortService>();
 
 var app = builder.Build();
 

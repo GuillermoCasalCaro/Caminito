@@ -1,8 +1,8 @@
-namespace Caminito
+namespace Caminito.Models
 {
-    public class Room
+    public class CaminitoRoom
     {
-        public Room(string name, string room_type, string meals_plan, int price) { 
+        public CaminitoRoom(string name, string room_type, string meals_plan, int price) { 
             this.name = name;
             this.room_type = room_type;
             this.meals_plan = meals_plan;

@@ -1,18 +1,18 @@
-namespace Caminito.Atalaya
+namespace Caminito.Models.Atalaya
 {
     public class AtalayaHotelsDto
     {
-        public List<AtalayaHotel> hotels { get; set; }
+        public List<AtalayaHotel>? Hotels { get; set; }
 
     }
 
     public class AtalayaHotel
     {
-        public string code { get; set; }
+        public string? Code { get; set; }
 
-        public string name { get; set; }
+        public string? Name { get; set; }
 
-        public string city { get; set; }
+        public string? City { get; set; }
 
     }
 }
